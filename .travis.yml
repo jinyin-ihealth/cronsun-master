@@ -1,0 +1,19 @@
+language: go
+go:
+- 1.9
+install:
+- go get -u github.com/coreos/etcd/clientv3
+- go get github.com/coreos/etcd/mvcc/mvccpb
+- go get github.com/rogpeppe/fastuuid
+- go get golang.org/x/net/context
+- go get gopkg.in/mgo.v2
+- go get github.com/fsnotify/fsnotify
+- go get github.com/go-gomail/gomail
+- go get go.uber.org/zap
+- go get github.com/cockroachdb/cmux
+- go get github.com/gorilla/mux
+- go get github.com/smartystreets/goconvey/convey
+before_script:
+- go vet -x ./...
+script:
+- go test -v -race ./...
